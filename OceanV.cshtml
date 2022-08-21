@@ -1,0 +1,74 @@
+﻿<!--Jordan Hendrikz, u19284129, HW4
+Goal 13/14 - Climate Action/Life Below Water
+NPO - Greenpeace-->
+
+@model List<u19284129_HW04.Models.O>
+
+@{
+    var resultS = "";
+    var inf = "";
+    double totalW = 0;
+    double pc = 0;
+
+    if (IsPost)
+    {
+        var t01 = Request["n1"];
+        var t02 = Request["n2"];
+
+        totalW = (2.0 * t01.AsInt()) * t02.AsInt();
+        pc = totalW / 10;
+
+        resultS = "The waste produced will amount to: " + totalW + "kg. Of which, " + pc + "kg will land up polluting our oceans.";
+        inf = "Everyone should strive to use less plastic and recycle more, the oceans need our help and any amount of waste is not beneficial.";
+    }
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Homework Assignment 4</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Jordan Hendrikz" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+
+    <meta http-equiv="ContentType" content="text/html; charset = UTF-8">
+    <meta name="viewport" content="width=device-width, initialscale = 1">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+
+<body id="ocCB" style="background-image:url('/Media/Images/ocean1.jpg'); background-size:cover; background-repeat: no-repeat;">
+
+    <div class="backG" style="background-color:rgba(255, 255, 255, 0.6); border:3px solid white; border-radius:4px; margin:2% 0% 2% 0%; padding:2% 5% 5% 2%;">
+        <h1><b>Ocean Pollution Calculator</b></h1>
+        <p>Use this calculator to effectively calculate what affect people's rubbish and waste is having on our environment and how dangerous it could be.</p>
+
+        <br />
+
+        <h1>Enter in the following fields:</h1>
+        <form id="addO" method="post">
+            <table>
+                <tr>
+                    <td><p><b>Amount of people: </b></p></td>
+                    <td><input id="npeople" name="n1" type="number" /></td>
+                </tr>
+                <tr>
+                    <td><p><b>Amount of months: </b></p></td>
+                    <td><input id="nmonths" name="n2" type="number" /></td>
+                </tr>
+            </table>
+            <br />
+            <br />
+            <input type="submit" value="Calculate" />
+        </form>
+        <br />
+        <br />
+        <p><b>@resultS</b></p>
+        <p><b>@inf</b></p>
+    </div>
+
+</body>
+
+</html>

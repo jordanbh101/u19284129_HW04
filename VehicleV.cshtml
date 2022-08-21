@@ -1,0 +1,91 @@
+﻿<!--Jordan Hendrikz, u19284129, HW4
+Goal 13/14 - Climate Action/Life Below Water
+NPO - Greenpeace-->
+
+@model List<u19284129_HW04.Models.V>
+
+@{
+    double numTotal = 0;
+    var resultSaved = "";
+    var info = "";
+
+    if (IsPost)
+    {
+        var t01 = Request["n1"];
+        var t02 = Request["n2"];
+        var t03 = Request["n3"];
+
+        if (t02 == "Unleaded")
+        {
+            numTotal = t01.AsInt() * 2.31;
+        }
+        else if (t02 == "Diesel")
+        {
+            numTotal = t01.AsInt() * 2.68;
+        }
+        else if (t02 == "Kerosene")
+        {
+            numTotal = t01.AsInt() * 3.16;
+        }
+
+        resultSaved = "Your carbon emission for your vehicle is: " + Math.Round(numTotal, 2) + "kg.";
+        info = "With an ever increasing amount of CO2 in our atmosphere we need use less in order to sustain life - try use a more convenient, environmentally stable source of fuel.";
+    }
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Homework Assignment 4</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Jordan Hendrikz" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+
+    <meta http-equiv="ContentType" content="text/html; charset = UTF-8">
+    <meta name="viewport" content="width=device-width, initialscale = 1">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+
+<body id="veCB" style="background-image:url('/Media/Images/car1.jpg'); background-size:cover; background-repeat: no-repeat;">
+
+    <div class="backG" style="background-color: rgba(255, 255, 255, 0.6); border: 3px solid white; border-radius: 4px; margin:2% 0% 2% 0%; padding:2% 5% 5% 2%;">
+        <h1><b>Vehicle Emissions Calculator</b></h1>
+        <p>Use this calculator to effectively calculate your vehicle emissions into our environment and how dangerous they could be.</p>
+
+        <br />
+
+        <h1>Enter in the following fields:</h1>
+        <form id="addV" method="post">
+            <table>
+                <tr>
+                    <td><p><b>Distance travelled (km): </b></p></td>
+                    <td><input id="dist" name="n1" type="number" /></td>
+                </tr>
+                <tr>
+                    <td><p><b>Fuel type: </b></p></td>
+                    <td>
+                        <input type="radio" id="unl" name="n2" value="Unleaded">
+                        <label for="unl">Unleaded</label>
+                        <input type="radio" id="die" name="n2" value="Diesel">
+                        <label for="die">Diesel</label>
+                        <input type="radio" id="kero" name="n2" value="Kerosene">
+                        <label for="elec">Kerosene</label>
+                    </td>
+                </tr>
+            </table>
+            <br />
+            <br />
+            <input type="submit" value="Calculate" />
+        </form>
+        <br />
+        <br />
+        <p><b>@resultSaved</b></p>
+        <p><b>@info</b></p>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+﻿@model u19284129_HW04.Models.VVM
+
+<h2>Your Vehicle Emission Results:</h2>
+
+
+
+<form onsubmit="backFunction()">
+    <input type="submit" value="Back to Previous Page" class="btn btn-primary" />
+</form>
+
+<script type="text/javascript">
+    function backFunction() {
+        $(document).on('click', '#backLink', function () {
+            history.go(-1);
+        });
+    }
+</script>
